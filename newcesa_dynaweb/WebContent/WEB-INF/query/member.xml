@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<querys>
+	<member>
+		<memberDetail>
+		<![CDATA[
+			SELECT *  
+			FROM member
+			WHERE seq = ?
+		]]>
+		</memberDetail>
+		<memberDetail2>
+		<![CDATA[
+			SELECT *  
+			FROM member
+			WHERE memberId=? AND password=? AND project_seq=?
+		]]>
+		</memberDetail2>
+		<memberDetail2_Coffee>
+		<![CDATA[
+			SELECT *  
+			FROM member_coffee
+			WHERE memberId=? AND password=? AND project_seq=?
+		]]>
+		</memberDetail2_Coffee>
+		<memberCheck>
+		<![CDATA[
+			SELECT * FROM member WHERE memberid=? and project_seq=?
+		]]>
+		</memberCheck>
+		<memberCheck_Coffee>
+		<![CDATA[
+			SELECT * FROM member_coffee WHERE memberid=? and project_seq=?
+		]]>
+		</memberCheck_Coffee>
+		<memberCheck2>
+		<![CDATA[
+			select project_seq, memberid, check_value, add_yn, regdate from member_check WHERE check_value <> 0
+		]]>
+		</memberCheck2>
+		<memberCheckSeq>
+		<![CDATA[
+			select check_seq from member_check WHERE project_seq=? Order by check_seq DESC LIMIT 1;
+		]]>
+		</memberCheckSeq>
+		
+		
+		<regMember>
+		<![CDATA[
+			INSERT INTO member (project_seq, memberid, password, regDate, lastLogin)
+			VALUES (?, ?, ?, now(), now())
+		]]>
+		</regMember>
+		<regMember_Coffee>
+		<![CDATA[
+			INSERT INTO member_coffee (project_seq, memberid, password, regDate, lastLogin)
+			VALUES (?, ?, ?, now(), now())
+		]]>
+		</regMember_Coffee>
+		<updateMemberLogin>
+		<![CDATA[
+			UPDATE admin SET lastLogin = now() WHERE seq = ?
+		]]>
+		</updateMemberLogin>
+		
+		<updateMemberCheckValue>
+		<![CDATA[
+			UPDATE member_check SET check_value = ? WHERE project_seq=? AND activity=? AND word=? AND memberid=? 
+		]]>
+		</updateMemberCheckValue>
+		
+		<regMemberCheckValue>
+		<![CDATA[
+			INSERT INTO member_check (project_seq, activity, word, memberid, check_value, add_yn, regdate, list_order)
+			VALUES (?, ?, ?, ?, ?, ?, now(), ?)
+		]]>
+		</regMemberCheckValue>
+		
+		<regMemberCheckInfoValue>
+		<![CDATA[
+			INSERT INTO member_check_info (check_seq, check_value, regdate)
+			VALUES (?, ?, now())
+		]]>
+		</regMemberCheckInfoValue>
+		
+		<memberCheckValueList>
+		<![CDATA[
+			SELECT * FROM member_check WHERE project_seq=? AND activity=? AND memberid=? ORDER BY list_order ASC
+		]]>
+		</memberCheckValueList>
+		
+		<memberCheckValueList2>
+		<![CDATA[
+			SELECT * FROM member_check WHERE project_seq=? AND activity=? AND memberid=? AND word=?
+		]]>
+		</memberCheckValueList2>
+		
+		
+
+		<delMemberCheckValue>
+		<![CDATA[
+			DELETE FROM member_check WHERE project_seq=? AND activity=? AND memberid=?
+		]]>
+		</delMemberCheckValue>
+		
+		
+
+		<memberPropertiesList>
+		<![CDATA[
+			SELECT A.memberid ,B.property01 ,B.property02 ,B.property03 ,B.property04 ,B.property05 ,B.property06 ,B.property07 ,B.property08 ,B.property09 ,B.property10 
+			FROM member A
+			LEFT JOIN member_properties B on A.project_seq = B.project_seq  AND A.memberid = B.memberid
+			WHERE A.project_seq = ?
+			ORDER BY A.memberid asc
+		]]>
+		</memberPropertiesList>
+		
+		<memberPropertiesList1>
+		<![CDATA[
+			SELECT A.memberid ,C.activity, D.word ,B.property01 ,B.property02 ,B.property03 ,B.property04 ,B.property05 ,B.property06 ,B.property07 ,B.property08 ,B.property09 ,B.property10 
+			FROM member A
+			LEFT JOIN member_properties B on A.project_seq = B.project_seq  AND A.memberid = B.memberid
+			left JOIN project_activity C ON A.project_seq = C.project_seq
+			left JOIN project_word D ON A.project_seq = D.project_seq
+			WHERE A.project_seq = ?
+			ORDER BY A.memberid asc,C.activity asc,D.word asc
+		]]>
+		</memberPropertiesList1>
+		
+		<regMemberProperties>
+		<![CDATA[
+			INSERT INTO member_properties (project_seq, memberid, property01, property02, property03, property04, property05, property06, property07, property08, property09, property10, regdate)
+			VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, now())
+		]]>
+		</regMemberProperties>
+
+		<delMemberProperties>
+		<![CDATA[
+			DELETE FROM member_properties WHERE project_seq=? AND memberid=?
+		]]>
+		</delMemberProperties>
+
+
+		<memberCheckedStatPoint>
+		<![CDATA[
+			SELECT SUM(check_value) AS sumValue FROM member_check 
+			$$WHERE$$
+		]]>
+		</memberCheckedStatPoint>
+		
+		<memberZeroCheckedCount>
+		<![CDATA[
+			SELECT count(*) FROM (SELECT check_value FROM member_check 
+			$$WHERE$$) a WHERE check_value!=0
+		]]>
+		</memberZeroCheckedCount>
+		
+		<memberCheckedInfo>
+		<![CDATA[
+			SELECT * FROM member_check_info WHERE  check_seq=? Order by info_seq DESC LIMIT 4
+		]]>
+		</memberCheckedInfo>
+		
+		<memberCheckedEtcStatPoint>
+		<![CDATA[
+			SELECT * FROM member_check WHERE add_yn='Y' AND  project_seq=? AND activity=?
+		]]>
+		</memberCheckedEtcStatPoint>
+		
+		<memberCheckedEtcStatPoint1>
+		<![CDATA[
+			SELECT * FROM member_check   WHERE project_seq=? AND activity=?
+		]]>
+		</memberCheckedEtcStatPoint1>
+	</member>
+</querys>

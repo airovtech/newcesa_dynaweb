@@ -1,0 +1,174 @@
+CREATE TABLE `admin` (
+  `seq` int(11) NOT NULL AUTO_INCREMENT,
+  `adminid` varchar(20) NOT NULL,
+  `password` varchar(32) NOT NULL,
+  `email` varchar(200) NOT NULL,
+  `permission` varchar(2000) NOT NULL DEFAULT '0',
+  `useYN` int(11) NOT NULL DEFAULT '1',
+  `deleteYN` int(11) NOT NULL DEFAULT '0',
+  `regdate` datetime NOT NULL,
+  `lastLogin` datetime DEFAULT NULL,
+  `user_group` int(11) DEFAULT NULL,
+  PRIMARY KEY (`seq`)
+) ENGINE=MyISAM AUTO_INCREMENT=37 DEFAULT CHARSET=utf8;
+
+
+
+CREATE TABLE `member` (
+  `seq` int(11) NOT NULL AUTO_INCREMENT,
+  `project_seq` int(11) NOT NULL,
+  `memberid` varchar(20) NOT NULL,
+  `password` varchar(32) NOT NULL,
+  `regdate` datetime NOT NULL,
+  `lastLogin` datetime DEFAULT NULL,
+  PRIMARY KEY (`seq`)
+) ENGINE=MyISAM AUTO_INCREMENT=1033 DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE `member_check` (
+  `check_seq` int(11) NOT NULL AUTO_INCREMENT,
+  `project_seq` int(11) NOT NULL,
+  `activity` varchar(100) NOT NULL DEFAULT '',
+  `word` varchar(100) DEFAULT '',
+  `memberid` varchar(20) NOT NULL,
+  `check_value` int(11) NOT NULL DEFAULT '0',
+  `add_yn` varchar(1) NOT NULL DEFAULT 'N',
+  `regdate` datetime NOT NULL,
+  `list_order` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`check_seq`,`project_seq`,`activity`,`memberid`,`list_order`)
+) ENGINE=MyISAM AUTO_INCREMENT=15431 DEFAULT CHARSET=utf8;
+
+
+
+CREATE TABLE `member_check_info` (
+  `info_seq` int(11) NOT NULL AUTO_INCREMENT,
+  `check_seq` int(11) NOT NULL,
+  `check_value` int(11) NOT NULL DEFAULT '0',
+  `regdate` datetime NOT NULL,
+  PRIMARY KEY (`info_seq`)
+) ENGINE=MyISAM AUTO_INCREMENT=5685 DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE `member_coffee` (
+  `seq` int(11) NOT NULL AUTO_INCREMENT,
+  `project_seq` int(11) NOT NULL,
+  `memberid` varchar(20) NOT NULL,
+  `password` varchar(32) NOT NULL,
+  `regdate` datetime NOT NULL,
+  `lastLogin` datetime DEFAULT NULL,
+  PRIMARY KEY (`seq`)
+) ENGINE=MyISAM AUTO_INCREMENT=1168 DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE `member_properties` (
+  `project_seq` int(11) NOT NULL,
+  `memberid` varchar(20) NOT NULL,
+  `property01` varchar(50) DEFAULT NULL,
+  `property02` varchar(50) DEFAULT NULL,
+  `property03` varchar(50) DEFAULT NULL,
+  `property04` varchar(50) DEFAULT NULL,
+  `property05` varchar(50) DEFAULT NULL,
+  `property06` varchar(50) DEFAULT NULL,
+  `property07` varchar(50) DEFAULT NULL,
+  `property08` varchar(50) DEFAULT NULL,
+  `property09` varchar(50) DEFAULT NULL,
+  `property10` varchar(50) DEFAULT NULL,
+  `regdate` datetime NOT NULL,
+  PRIMARY KEY (`project_seq`,`memberid`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE `project` (
+  `seq` int(11) NOT NULL AUTO_INCREMENT,
+  `project_name` varchar(100) NOT NULL,
+  `project_bg` varchar(100) DEFAULT NULL,
+  `font_size` varchar(100) DEFAULT NULL,
+  `font_color` varchar(100) DEFAULT NULL,
+  `project_desc` varchar(100) NOT NULL,
+  `start_date` date NOT NULL,
+  `end_date` date NOT NULL,
+  `image` varchar(100) DEFAULT NULL,
+  `user_group` int(11) DEFAULT '0',
+  `deleteYN` int(11) NOT NULL DEFAULT '0',
+  `regdate` datetime NOT NULL,
+  PRIMARY KEY (`seq`)
+) ENGINE=MyISAM AUTO_INCREMENT=134 DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE `project_activity` (
+  `seq` int(11) NOT NULL AUTO_INCREMENT,
+  `activity` varchar(100) NOT NULL,
+  `project_seq` int(11) DEFAULT '0',
+  PRIMARY KEY (`seq`)
+) ENGINE=MyISAM AUTO_INCREMENT=3531 DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE `project_activity_word` (
+  `seq` int(11) NOT NULL AUTO_INCREMENT,
+  `checked_activity` varchar(3) NOT NULL,
+  `checked_word` varchar(3) NOT NULL,
+  `activity` varchar(100) NOT NULL,
+  `word` varchar(100) NOT NULL,
+  `project_seq` int(11) DEFAULT '0',
+  PRIMARY KEY (`seq`)
+) ENGINE=MyISAM AUTO_INCREMENT=12734 DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE `project_properties` (
+  `project_seq` int(11) NOT NULL,
+  `property01` varchar(50) DEFAULT NULL,
+  `property02` varchar(50) DEFAULT NULL,
+  `property03` varchar(50) DEFAULT NULL,
+  `property04` varchar(50) DEFAULT NULL,
+  `property05` varchar(50) DEFAULT NULL,
+  `property06` varchar(50) DEFAULT NULL,
+  `property07` varchar(50) DEFAULT NULL,
+  `property08` varchar(50) DEFAULT NULL,
+  `property09` varchar(50) DEFAULT NULL,
+  `property10` varchar(50) DEFAULT NULL,
+  `regdate` datetime NOT NULL,
+  PRIMARY KEY (`project_seq`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE `project_word` (
+  `seq` int(11) NOT NULL AUTO_INCREMENT,
+  `word` varchar(100) NOT NULL,
+  `project_seq` int(11) DEFAULT '0',
+  PRIMARY KEY (`seq`)
+) ENGINE=MyISAM AUTO_INCREMENT=2856 DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE `user_group` (
+  `seq` int(11) NOT NULL AUTO_INCREMENT,
+  `group_name` varchar(100) NOT NULL,
+  `deleteYN` int(11) NOT NULL DEFAULT '0',
+  `regdate` datetime NOT NULL,
+  PRIMARY KEY (`seq`)
+) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE `vocabulary` (
+  `seq` int(11) NOT NULL AUTO_INCREMENT,
+  `word` varchar(100) NOT NULL,
+  `user_group` int(11) DEFAULT '0',
+  `deleteYN` int(11) NOT NULL DEFAULT '0',
+  `regdate` datetime NOT NULL,
+  PRIMARY KEY (`seq`)
+) ENGINE=MyISAM AUTO_INCREMENT=253 DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE `vocabulary_group` (
+  `seq` int(11) NOT NULL AUTO_INCREMENT,
+  `group_name` varchar(100) NOT NULL,
+  `user_group` int(11) DEFAULT '0',
+  `deleteYN` int(11) NOT NULL DEFAULT '0',
+  `regdate` datetime NOT NULL,
+  PRIMARY KEY (`seq`)
+) ENGINE=MyISAM AUTO_INCREMENT=70 DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE `vocabulary_group_sub` (
+  `vocabulary_seq` int(11) DEFAULT '0',
+  `vocabulary_group_seq` int(11) DEFAULT '0'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
