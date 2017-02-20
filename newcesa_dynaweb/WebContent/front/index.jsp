@@ -106,8 +106,9 @@ function setCheckTime(rowId){
 	$.ajax({
 		type:"POST",  
 		url:"regAjax_1.jsp",
-		data:params,      
+		data:params,
 		success:function(data){  
+			//alert("2");
 			var rdata = eval( '(' + data + ')' );
 			//alert(rdata.result);
 			if(rdata=="fail"){
@@ -247,6 +248,7 @@ function setActivitySave(){
 		data:params,
 		async: false,
 		success:function(data){
+			//alert("3");
 			var rdata = eval( '(' + data + ')' );
 			//alert(rdata.result);
 			if(rdata=="fail"){

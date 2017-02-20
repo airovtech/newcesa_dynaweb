@@ -48,9 +48,11 @@ PreparedStatement pstmt = null;
 ResultSet rs = null;
 String memberid1=null;
 try{
-String jdbcDriver = "jdbc:mysql://wine.smartworks.net:3306/newcesa?useUnicode=true&characterEncoding=utf8";
+//String jdbcDriver = "jdbc:mysql://wine.smartworks.net:3306/newcesa?useUnicode=true&characterEncoding=utf8";
+String jdbcDriver = "jdbc:mysql://localhost:3306/newcesa?useUnicode=true&characterEncoding=utf8";
 String dbUser = "root";
-String dbPwd = "smartworks";
+//String dbPwd = "smartworks";
+String dbPwd = "12345";
 conn = DriverManager.getConnection(jdbcDriver, dbUser, dbPwd);
 pstmt = conn.prepareStatement("SELECT * FROM member Order by seq DESC LIMIT 1");
 rs = pstmt.executeQuery();
