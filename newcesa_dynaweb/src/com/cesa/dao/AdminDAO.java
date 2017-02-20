@@ -15,7 +15,7 @@ public class AdminDAO extends BaseDAO {
 	}
 
 	/**
-     * AdminDAO instance¸¦ »ý¼ºÇÑ´Ù.
+     * AdminDAO instanceï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
      *
      * @return AdminDAO
      */
@@ -24,9 +24,9 @@ public class AdminDAO extends BaseDAO {
     }
 
 	/**
-	 * °ü¸®ÀÚ sample ÆäÀÌÁö ¸ñ·Ï
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ sample ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 	 *
-	 * @param id »ç¿ëÀÚID
+	 * @param id ï¿½ï¿½ï¿½ï¿½ï¿½ID
 	 * @return MemberVO
 	 */
 	public RowSetMapper adminList() throws DataAccessException {
@@ -64,7 +64,7 @@ public class AdminDAO extends BaseDAO {
 
 	/**
 	*
-	* Æ¯Á¤ °èÁ¤ÀÌ ºñ¹Ð¹øÈ£¿Í ÀÏÄ¡ÇÏ´ÂÁö È®ÀÎÇÑ´Ù.(°ü¸®ÀÚ °èÁ¤ Ã¼Å©)
+	* Æ¯ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ð¹ï¿½È£ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½Ï´ï¿½ï¿½ï¿½ È®ï¿½ï¿½ï¿½Ñ´ï¿½.(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ã¼Å©)
 	*
 	* @param adminid, password
 	* @return boolean 
@@ -78,6 +78,7 @@ public class AdminDAO extends BaseDAO {
 		
 		StringBuffer sbufQuery = new StringBuffer();
 		try{
+			QueryContext qc = QueryContext.getInstance();
 			sbufQuery.append(QueryContext.getInstance().get("admin.checkAdmin"));
 			System.out.println("admin.checkAdmin=" +sbufQuery.toString() );
 			RowSetMapper db = new RowSetMapper();
@@ -87,19 +88,19 @@ public class AdminDAO extends BaseDAO {
 			
 
 			if( !db.next() ) {
-				// ÇØ´ç °èÁ¤ÀÌ ¾øÀ½.
+				// ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
 				check_result = "fail_1";
 			}
 			else {
 
 				if(password.equals(db.getString("password"))){
-					// ÇØ´ç °èÁ¤°ú ºñ¹Ð¹øÈ£°¡ ÀÏÄ¡ÇÏ¹Ç·Î,  ¸¶Áö¸· ·Î±×ÀÎ ÀÏ½Ã ¾÷µ¥ÀÌÆ® ÇÑ´Ù.
+					// ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ð¹ï¿½È£ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½Ï¹Ç·ï¿½,  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Î±ï¿½ï¿½ï¿½ ï¿½Ï½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Ñ´ï¿½.
 					check_result = "success";
 					setAdminLoginUpdate(adminid);
 
 				}
 				else {
-					// ÇØ´ç °èÁ¤°ú ºñ¹Ð¹øÈ£°¡ ºÒÀÏÄ¡ ÇÔ.
+					// ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ð¹ï¿½È£ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ä¡ ï¿½ï¿½.
 					check_result = "fail_2";
 				}
 			}
@@ -116,7 +117,7 @@ public class AdminDAO extends BaseDAO {
 	}
 
 	/**
-	* °ü¸®ÀÚÀÇ ¸¶Áö¸· ·Î±×ÀÎ ½Ã°£À» ¾÷µ¥ÀÌÆ®ÇÑ´Ù.
+	* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Î±ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½Ñ´ï¿½.
 	*
 	* @param adminid
 	*
@@ -142,7 +143,7 @@ public class AdminDAO extends BaseDAO {
 
 
 	/**
-	* °ü¸®ÀÚ ¸ñ·ÏÀ» Á¶È¸ÇÑ´Ù.
+	* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¸ï¿½Ñ´ï¿½.
 	* @param void
 	* @return RowSetMapper
 	*/
@@ -190,7 +191,7 @@ public class AdminDAO extends BaseDAO {
 	}
 
 	/**
-	 * °ü¸®ÀÚ »ó¼¼ Á¤º¸¸¦ Á¶È¸ÇÑ´Ù.
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¸ï¿½Ñ´ï¿½.
 	 * @param String seq
 	 * @return RowSetMapper
 	 */
@@ -225,7 +226,7 @@ public class AdminDAO extends BaseDAO {
 	}
 
 	/**
-	 * ID¸¦ Á¶È¸ÇÑ´Ù.
+	 * IDï¿½ï¿½ ï¿½ï¿½È¸ï¿½Ñ´ï¿½.
 	 * @param String id
 	 * @return RowSetMapper
 	 */
@@ -260,7 +261,7 @@ public class AdminDAO extends BaseDAO {
 	}
 
 	/**
-	 * admin °ü¸®ÀÚ¸¦  µî·ÏÇÑ´Ù.
+	 * admin ï¿½ï¿½ï¿½ï¿½ï¿½Ú¸ï¿½  ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 	 * @param ArrayList params
 	 * @return boolean 
 	 */
@@ -295,7 +296,7 @@ public class AdminDAO extends BaseDAO {
 	}
 	
 	/**
-	 * °ü¸®ÀÚ Á¤º¸¸¦ ¼öÁ¤ÇÑ´Ù.
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 	 * @param ArrayList params
 	 * @return boolean 
 	 */
@@ -310,7 +311,7 @@ public class AdminDAO extends BaseDAO {
 			if(params.size() == 3){
 				sbufQuery.append(QueryContext.getInstance().get("admin.modAdmin1"));
 			}
-			else{ // password ¼öÁ¤
+			else{ // password ï¿½ï¿½ï¿½ï¿½
 				sbufQuery.append(QueryContext.getInstance().get("admin.modAdmin2"));
 			}
 
@@ -335,7 +336,7 @@ public class AdminDAO extends BaseDAO {
 	}
 
 	/**
-	 * °ü¸®ÀÚ Á¤º¸¸¦ »èÁ¦ÇÑ´Ù.
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 	 * @param String seq
 	 * @return int
 	 */

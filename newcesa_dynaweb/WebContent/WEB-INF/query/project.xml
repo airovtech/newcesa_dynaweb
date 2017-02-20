@@ -61,8 +61,8 @@
 		</projectActivityList>
 		<regActivity>
 		<![CDATA[
-			INSERT INTO project_activity (activity, project_seq, activity_image)
-			VALUES (?, ?, ?)
+			INSERT INTO project_activity (activity, project_seq, activity_image, sbp_name, sbp_id, sbp_activityId)
+			VALUES (?, ?, ?, ?, ? ,?)
 		]]>
 		</regActivity>
 		<delActivity>
@@ -162,5 +162,34 @@
 			WHERE project_seq = ?
 		]]>
 		</modProjectProperties>
+		
+		
+		
+		
+		<getProjectActivityWord>
+		<![CDATA[
+			select distinct word from project_activity_word where project_seq = ? 
+		]]>
+		</getProjectActivityWord>
+		<regSBPProject>
+		<![CDATA[
+			update project set sbp_project_name = ? , sbp_project_puid = ? where seq= ? 
+		]]>
+		</regSBPProject>
+		<delProject_Activity>
+		<![CDATA[
+			delete from project_activity where project_seq = ? and sbp_name = ? 
+		]]>
+		</delProject_Activity>
+		<delProject_SBPProject>
+		<![CDATA[
+			update project set sbp_project_name = ? , sbp_project_puid = ? where seq = ?
+		]]>
+		</delProject_SBPProject>
+		<get_SBPActivity>
+		<![CDATA[
+			select * from project_activity where project_seq = ? and sbp_name = ?
+		]]>
+		</get_SBPActivity>
 	</project>
 </querys>

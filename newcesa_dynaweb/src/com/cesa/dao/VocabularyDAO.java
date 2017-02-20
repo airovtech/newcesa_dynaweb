@@ -16,7 +16,7 @@ public class VocabularyDAO extends BaseDAO {
 	}
 
 	/**
-     * VocabularyDAO instance¸¦ »ı¼ºÇÑ´Ù.
+     * VocabularyDAO instanceï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
      *
      * @return VocabularyDAO
      */
@@ -25,9 +25,9 @@ public class VocabularyDAO extends BaseDAO {
     }
 
 	/**
-	 * sample ÆäÀÌÁö ¸ñ·Ï
+	 * sample ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 	 *
-	 * @param id »ç¿ëÀÚID
+	 * @param id ï¿½ï¿½ï¿½ï¿½ï¿½ID
 	 * @return MemberVO
 	 */
 	public RowSetMapper vocabularyList() throws DataAccessException {
@@ -64,10 +64,11 @@ public class VocabularyDAO extends BaseDAO {
 	
 
 	/**
-	* ¸ñ·ÏÀ» Á¶È¸ÇÑ´Ù.
+	* ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¸ï¿½Ñ´ï¿½.
 	* @param void
 	* @return RowSetMapper
 	*/
+	/* í”„ë¡œì íŠ¸ - ìˆ˜ì • - ì–´íœ˜ë“±ë¡(step.02) ì—ì„œ ê²½í—˜ì–´íœ˜ ê·¸ë£¹ ë‚´ìš©ë³´ê¸° í´ë¦­í–ˆì„ë•Œ ì‹¤í–‰ë¨. */
 	public RowSetMapper getVocabularyList(String groupSeq){
 		if( log.isDebugEnabled() ) {
 			//log.debug("getVocabularyList() Start");
@@ -110,7 +111,7 @@ public class VocabularyDAO extends BaseDAO {
 	}
 
 	/**
-	 * »ó¼¼ Á¤º¸¸¦ Á¶È¸ÇÑ´Ù.
+	 * ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¸ï¿½Ñ´ï¿½.
 	 * @param String seq
 	 * @return RowSetMapper
 	 */
@@ -145,7 +146,7 @@ public class VocabularyDAO extends BaseDAO {
 	}
 
 	/**
-	 * word¸¦ Á¶È¸ÇÑ´Ù.
+	 * wordï¿½ï¿½ ï¿½ï¿½È¸ï¿½Ñ´ï¿½.
 	 * @param String id
 	 * @return RowSetMapper
 	 */
@@ -182,7 +183,7 @@ public class VocabularyDAO extends BaseDAO {
 	}
 
 	/**
-	 * word¸¦ µî·ÏÇÑ´Ù.
+	 * wordï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 	 * @param ArrayList params
 	 * @return boolean 
 	 */
@@ -217,7 +218,7 @@ public class VocabularyDAO extends BaseDAO {
 	}
 	
 	/**
-	 * Á¤º¸¸¦ ¼öÁ¤ÇÑ´Ù.
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 	 * @param ArrayList params
 	 * @return boolean 
 	 */
@@ -255,7 +256,7 @@ public class VocabularyDAO extends BaseDAO {
 	}
 
 	/**
-	 * Á¤º¸¸¦ »èÁ¦ÇÑ´Ù.
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 	 * @param String seq
 	 * @return int
 	 */
@@ -289,7 +290,7 @@ public class VocabularyDAO extends BaseDAO {
 	
 
 	/**
-	* ¸ñ·ÏÀ» Á¶È¸ÇÑ´Ù.
+	* ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¸ï¿½Ñ´ï¿½.
 	* @param void
 	* @return RowSetMapper
 	*/
@@ -335,7 +336,7 @@ public class VocabularyDAO extends BaseDAO {
 	}
 	
 	/**
-	 * »ó¼¼ Á¤º¸¸¦ Á¶È¸ÇÑ´Ù.
+	 * ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¸ï¿½Ñ´ï¿½.
 	 * @param String seq
 	 * @return RowSetMapper
 	 */
@@ -370,7 +371,7 @@ public class VocabularyDAO extends BaseDAO {
 	}
 
 	/**
-	 * word ±×·ìÀ» µî·ÏÇÑ´Ù.
+	 * word ï¿½×·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 	 * @param String groupName, String groupSeq
 	 * @return String 
 	 */
@@ -378,7 +379,7 @@ public class VocabularyDAO extends BaseDAO {
 		boolean check_result = false;
 		String lastInsertId = null;
 
-		//lastInsert ID ¸¦ °¡Á®¿À±âÀ§ÇØ conn À» ¿©±â¼­ °¡Á®¿Â´Ù.
+		//lastInsert ID ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ conn ï¿½ï¿½ ï¿½ï¿½ï¿½â¼­ ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½.
 		Connection con = ConnectionManager.getConnection();
 
 		if( log.isDebugEnabled() ) {
@@ -423,7 +424,7 @@ public class VocabularyDAO extends BaseDAO {
 
 
 	/**
-	 * Á¤º¸¸¦ ¼öÁ¤ÇÑ´Ù.
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 	 * @param String groupName, String groupSeq
 	 * @return boolean 
 	 */
@@ -460,7 +461,7 @@ public class VocabularyDAO extends BaseDAO {
 	}
 
 	/**
-	 * Á¤º¸¸¦ »èÁ¦ÇÑ´Ù.
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 	 * @param String seq
 	 * @return int
 	 */
@@ -495,7 +496,7 @@ public class VocabularyDAO extends BaseDAO {
 
 
 	/**
-	* ¸ñ·ÏÀ» Á¶È¸ÇÑ´Ù.
+	* ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¸ï¿½Ñ´ï¿½.
 	* @param void
 	* @return RowSetMapper
 	*/
@@ -531,7 +532,7 @@ public class VocabularyDAO extends BaseDAO {
 	}
 
 	/**
-	 * µî·ÏÇÑ´Ù.
+	 * ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 	 * @param String groupName, String groupSeq
 	 * @return boolean 
 	 */
@@ -566,7 +567,7 @@ public class VocabularyDAO extends BaseDAO {
 	}
 
 	/**
-	 * Á¤º¸¸¦ »èÁ¦ÇÑ´Ù.
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 	 * @param String seq
 	 * @return int
 	 */

@@ -43,12 +43,10 @@
 		</delVocabulary>
 		<groupList>
 		<![CDATA[
-			SELECT itable.* FROM (
 			SELECT A.*, B.group_name AS name
 			FROM vocabulary_group A
 			LEFT JOIN user_group B on A.user_group=B.seq
 			$$WHERE$$
-			) itable
 		]]>
 		</groupList>
 		<groupDetail>

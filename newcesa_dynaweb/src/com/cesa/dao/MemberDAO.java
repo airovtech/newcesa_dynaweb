@@ -395,6 +395,7 @@ public class MemberDAO extends BaseDAO {
 	 * @param ArrayList params
 	 * @return boolean 
 	 */
+	/* word 점수를 등록한다. */
 	public boolean regMemberCheckValue(List params){
 		boolean check_result = false;
 		if( log.isDebugEnabled() ) {
@@ -476,6 +477,7 @@ public class MemberDAO extends BaseDAO {
 	 * @param String memberId, String activity, String projectSeq
 	 * @return RowSetMapper
 	 */
+	/* activity에 대한 word 및 점수를 가져온다 */
 	public RowSetMapper getMemberCheckValueDetail(String memberId, String activity, String projectSeq){
 		if( log.isDebugEnabled() ) {
 			//log.debug("getMemberCheckValueDetail() Start");
@@ -633,6 +635,7 @@ public class MemberDAO extends BaseDAO {
 	 * @param ArrayList params
 	 * @return boolean 
 	 */
+	/* 각 word 점수 업데이트 */
 	public boolean updateMemberCheckValue(List params){
 		boolean check_result = false;
 		if( log.isDebugEnabled() ) {
@@ -653,16 +656,19 @@ public class MemberDAO extends BaseDAO {
 				db.setString(i, (String)params.get(i-1));
 			}
 			*/
+			
 			db.setString(1, (String)params.get(4));
-			db.setString(2, (String)params.get(0));
-			db.setString(3, (String)params.get(1));
-			db.setString(4, (String)params.get(2));
-			db.setString(5, (String)params.get(3));
+			db.setInt(2, Integer.parseInt((String)params.get(6)));
+			db.setString(3, (String)params.get(0));
+			db.setString(4, (String)params.get(1));
+			db.setString(5, (String)params.get(2));
+			db.setString(6, (String)params.get(3));
 			if(db.executeUpdate(query) == 1){
 				check_result = true;
 			}
 
 		} catch(Exception e){
+			System.out.println(e.toString());
 			if( log.isDebugEnabled() ) {
 				check_result = false;
 				log.debug("Exception : " + e);
@@ -828,6 +834,7 @@ public class MemberDAO extends BaseDAO {
 	 * @param ArrayList params
 	 * @return int 
 	 */
+	/* 선택한 각 유저들의 word 1개에 대한 점수의 sum값을 구한다 */
 	public int getMemberCheckedStatPoint(String projectSeq, String memberid, String activity, String word){
 		int result = 0;
 		if( log.isDebugEnabled() ) {
@@ -846,7 +853,7 @@ public class MemberDAO extends BaseDAO {
 
 			sbufQuery.append(QueryContext.getInstance().get("member.memberCheckedStatPoint"));
 
-			whereQuery.append("WHERE project_seq=? AND activity=? AND word=? \n");
+			whereQuery.append("WHERE project_seq=? AND activity=? AND word=? and info='new' \n");
 			if(memberid!=null && memberid.trim().length()>0){
 				
 				memberLength = memberid.split(",").length;
@@ -881,6 +888,9 @@ public class MemberDAO extends BaseDAO {
 				}
 			}
 
+			/* 2017.02.06 조재일 - 선택한 유저의 activity 점수 합계구하는 쿼리 실행 추가 (아래로부터 1줄)  */
+			db.execute(query);
+			
 			if(db.next()){
 				result = db.getInt(1);
 			}
@@ -901,6 +911,7 @@ public class MemberDAO extends BaseDAO {
 	 * @param ArrayList params
 	 * @return int 
 	 */
+	/* 선택한 각 유저들의 word 1개에 대한 점수중에 0이 아닌 개수를 구한다 */
 	public int getMemberZeroCheckedCount(String projectSeq, String memberid, String activity, String word){
 		int result = 0;
 		if( log.isDebugEnabled() ) {
@@ -1087,4 +1098,137 @@ public class MemberDAO extends BaseDAO {
 		}
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/* member_check 테이블 업데이트 */
+	public boolean updateMemberCheck(String project_seq){
+		boolean check_result = false;
+		if( log.isDebugEnabled() ) {
+			//log.debug("");
+		}
+		StringBuffer sbufQuery = new StringBuffer();
+		try {
+			sbufQuery.append(QueryContext.getInstance().get("member.updateMemberCheck"));
+			RowSetMapper db = new RowSetMapper();
+			QueryManager query = new QueryManager(sbufQuery.toString());
+
+			db.setString(1, project_seq);
+
+			if(db.executeUpdate(query) == 1){
+				check_result = true;
+			}
+			if( log.isDebugEnabled() ) {
+				//log.debug("regProjectActivity() End");
+			}
+
+		} catch (Exception e) {
+			if( log.isDebugEnabled() ) {
+				check_result = false;
+				log.debug("Exception : " + e);
+			}
+		}
+		return check_result;
+	}
+	
+	
+	
+	/* 새로 등록된 word 확인  */
+	public RowSetMapper checkMemberCheckInfo(List params){
+		boolean check_result = false;
+		if( log.isDebugEnabled() ) {
+			//log.debug("regMemberCheckValue() Start");
+		}
+		
+		StringBuffer sbufQuery = new StringBuffer();
+		try {
+			sbufQuery.append(QueryContext.getInstance().get("member.checkMemberCheckInfo"));
+			RowSetMapper db = new RowSetMapper();
+			QueryManager query = new QueryManager(sbufQuery.toString());
+			
+			db.setString(1, (String)params.get(0));
+			db.setString(2, (String)params.get(1));
+			db.setString(3, (String)params.get(2));
+			db.setString(4, (String)params.get(3));
+			db.execute(query);
+			
+			if( log.isDebugEnabled() ) {
+				//log.debug("getMemberCheckedEtcStatPoint() End");
+			}
+
+			return db;
+
+		} catch (DBConnectedException dce) {
+			throw new DataAccessException(dce.getMessage(), dce);
+		} catch (SQLException e) {
+			throw new DataAccessException(e.getMessage(), e);
+		} catch (Exception e) {
+			if( log.isDebugEnabled() ) {
+				log.debug("Exception : " + e);
+			}
+			throw new DataAccessException(e.getMessage(), e);
+		}
+	}
+	
+	
+	
+	/* word 점수를 등록한다. */
+	public boolean regMemberCheckValue2(List params){
+		boolean check_result = false;
+		if( log.isDebugEnabled() ) {
+			//log.debug("regMemberCheckValue() Start");
+		}
+		
+		StringBuffer sbufQuery = new StringBuffer();
+		try {
+
+			sbufQuery.append(QueryContext.getInstance().get("member.regMemberCheckValue2"));
+			
+			RowSetMapper db = new RowSetMapper();
+			QueryManager query = new QueryManager(sbufQuery.toString());
+
+			for(int i = 1; i <= params.size() ; i++){
+				db.setString(i, (String)params.get(i-1));
+				
+			}
+			if(db.executeUpdate(query) == 1){
+				check_result = true;
+			}
+
+		} catch(Exception e){
+			if( log.isDebugEnabled() ) {
+				check_result = false;
+				log.debug("Exception : " + e);
+			}
+		}
+
+		return check_result;
+	}
+	
+	
+	
+	
+	
+	
 }

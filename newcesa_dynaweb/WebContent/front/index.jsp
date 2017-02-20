@@ -244,8 +244,9 @@ function setActivitySave(){
 	$.ajax({
 		type:"POST",  
 		url:"regAjax.jsp",
-		data:params,      
-		success:function(data){  
+		data:params,
+		async: false,
+		success:function(data){
 			var rdata = eval( '(' + data + ')' );
 			//alert(rdata.result);
 			if(rdata=="fail"){

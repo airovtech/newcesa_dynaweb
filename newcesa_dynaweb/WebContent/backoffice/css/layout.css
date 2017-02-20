@@ -227,7 +227,7 @@ _display:inline;
 
 
 /*------------------------------------------------------------------------------
- * Content Page ¿ä¼Ò Á¤ÀÇ
+ * Content Page ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 ------------------------------------------------------------------------------*/
 /* Page Navigate Start */
 #page_navigate{
@@ -249,25 +249,25 @@ _display:inline;
 	text-align:right;
 }
 
-/* 2010.11.05 Ãß°¡ */
-    /* »ó´Ü °Ë»ö TYPE(1) */
+/* 2010.11.05 ï¿½ß°ï¿½ */
+    /* ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½ TYPE(1) */
 #multi_select_form_warp {clear:both;width:902px;height:92px;border:2px solid #dbdbdb;}
 #multi_select_form_warp dl {float:left;width:450px;}
 #multi_select_form_warp dt {clear:both;float:left;width:100px;height:21px;background:#ececec;border-bottom:1px solid #e2e2e2;    background:#ececec;	font-weight:bold;	padding-top:9px;	padding-left:20px;    }
 #multi_select_form_warp dd {float:left;height:25px;width:310px;border-bottom:1px solid #e2e2e2;    padding-top:5px;    padding-left:20px;    }
 #multi_select_form_warp dd select {     width:210px;}    
 
-    /* »ó´Ü °Ë»ö TYPE(2) */
+    /* ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½ TYPE(2) */
 #search_form_inline { width:905px; height:28px;}
 #search_form_inline_in { width:100%; text-align:right; background:#ffffff; font-family:Dotum,Arial;color:#5c5c5c; font-weight:bold;}
 
-    /* 4°¢ info box */
+    /* 4ï¿½ï¿½ info box */
 #info_box_warp {clear:both;width:905px;height:90px;float:left;border:1px solid #dbdbdb;}
 #info_box_in {width:903px;height:88px;background:#ececec;border:1px solid #ffffff;}
 #info_box_in p {font-family:Dotum,Arial;font-size:10pt;color:#676566;line-height:20px;margin-left:20px;margin-top:15px;}
 #info_box_in p span {color:#4aaaf0;}
 
-    /* ÀÔ·Â Æû */
+    /* ï¿½Ô·ï¿½ ï¿½ï¿½ */
 #form_warp {clear:both;width:905px;border-top:2px solid #434343;}
 .inpt_dt {float:left;width:105px;_height:30px;min-height:30px;background:#ececec;border-bottom:1px solid #e2e2e2;font-weight:bold;padding:9px 0 0 20px;}
 
@@ -288,7 +288,7 @@ _display:inline;
     /* btn_group_right_align */
 .btn_group_right_align {float:left;width:905px;margin-top:10px;text-align:right;}
     
-    /* µé¿©¾²±â ¹®´Ü ±¸Á¶ */
+    /* ï¿½é¿©ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ */
 #doc_wrap { float:left;}
 #doc_wrap dl { margin-top:10px;margin-left:30px;}
 #doc_wrap dt { padding-top:10px; line-height:18px;}
@@ -297,7 +297,7 @@ _display:inline;
     
 
 /*
- * Ãß°¡ÀûÀ¸·Î Á¤ÀÇÇÑ CSS (2011.07.20 by MJD)
+ * ï¿½ß°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ CSS (2011.07.20 by MJD)
  */ 
 .formTable {
 	border-bottom: 2px solid #434343;
@@ -401,7 +401,7 @@ _display:inline;
 
 
 
-/* ¸¶½ºÅ© ¶Ù¿ì±â */
+/* ï¿½ï¿½ï¿½ï¿½Å© ï¿½Ù¿ï¿½ï¿½ */
  #mask {  
    position:absolute;  
    z-index:9000;
@@ -414,7 +414,7 @@ _display:inline;
  } 
   
 /*
- ÆË¾÷À¸·Î ¶ß´Â À©µµ¿ì css  
+ ï¿½Ë¾ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ css  
 */ 
  .layerWindow{
    display: none;

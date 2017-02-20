@@ -41,7 +41,6 @@ $(function(){
 function loginCheck(){
 
 	var f = document.frm;
-
 	if ( !f.adminid.value ) {
 		alert("Please enter ID");
 		f.adminid.focus();

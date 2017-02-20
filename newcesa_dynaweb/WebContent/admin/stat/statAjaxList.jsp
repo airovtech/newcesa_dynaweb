@@ -159,7 +159,8 @@
 							sbufTable.append("<td>"+exFormat.format(avg)+"</td> \n");
 							arrPointData.add(arrPointCount, exFormat.format(avg));
 						}else{
-						avg = (float)point/zeroCount;
+						//avg = (float)point/zeroCount;arrUserList
+						avg = (float)point/arrUserList.size();
 						sbufTable.append("<td>"+exFormat.format(avg)+"</td> \n");
 						arrPointData.add(arrPointCount, exFormat.format(avg));
 						}

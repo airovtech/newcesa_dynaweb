@@ -64,7 +64,7 @@
 		
 		<updateMemberCheckValue>
 		<![CDATA[
-			UPDATE member_check SET check_value = ? WHERE project_seq=? AND activity=? AND word=? AND memberid=? 
+			UPDATE member_check SET check_value = ?, list_order=? WHERE project_seq=? AND activity=? AND word=? AND memberid=? and info='new'
 		]]>
 		</updateMemberCheckValue>
 		
@@ -84,7 +84,7 @@
 		
 		<memberCheckValueList>
 		<![CDATA[
-			SELECT * FROM member_check WHERE project_seq=? AND activity=? AND memberid=? ORDER BY list_order ASC
+			SELECT * FROM member_check WHERE project_seq=? AND activity=? AND memberid=?      and info='new'     ORDER BY list_order ASC
 		]]>
 		</memberCheckValueList>
 		
@@ -171,5 +171,25 @@
 			SELECT * FROM member_check   WHERE project_seq=? AND activity=?
 		]]>
 		</memberCheckedEtcStatPoint1>
+		
+		
+		
+		
+		
+
+		<updateMemberCheck>
+			<![CDATA[
+				update member_check set info='old' where project_seq=?
+			]]>
+		</updateMemberCheck>
+		<checkMemberCheckInfo>
+			select * from member_check where project_seq=? and activity=? and word=? and memberid=? and info='new'
+		</checkMemberCheckInfo>
+		<regMemberCheckValue2>
+		<![CDATA[
+			INSERT INTO member_check (project_seq, activity, word, memberid, check_value, add_yn, regdate, list_order, info)
+			VALUES (?, ?, ?, ?, ?, ?, now(), ?, 'new')
+		]]>
+		</regMemberCheckValue2>
 	</member>
 </querys>

@@ -6,7 +6,7 @@ import com.cesa.util.XMLConfiguration;
 
 /**
  * QueryContext class
- * SqlMapConfig¿¡ Á¤ÀÇµÈ SQL¹®À» ÀÐ¾î »ç¿ëÇÑ´Ù.
+ * SqlMapConfigï¿½ï¿½ ï¿½ï¿½ï¿½Çµï¿½ SQLï¿½ï¿½ï¿½ï¿½ ï¿½Ð¾ï¿½ ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
  *
  * @version	1.0
  * @author	moon jong deok, 2008-10-22
@@ -16,17 +16,17 @@ public class QueryContext {
 	private static Logger logger = Logger.getLogger(QueryContext.class);
 	
 	/**
-	 * ½Ì±ÛÅæ. ÇÁ·ÎÆÛÆ¼ ³»¿ëÀ» ´ã°í ÀÖ´Ù.
+	 * ï¿½Ì±ï¿½ï¿½ï¿½. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¼ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½.
 	 */
     private static QueryContext queryContext = null;
 	
     /**
-     * XML Configuration ³»¿ëÀ» ´ã°í ÀÖ´Ù.
+     * XML Configuration ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½.
      */
 	public static XMLConfiguration config;
 	
 	/**
-     * ½Ì±ÛÅæÀ¸·Î »ý¼ºÇÏµµ·Ï ÇÑ´Ù.
+     * ï¿½Ì±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ ï¿½Ñ´ï¿½.
      * @return
      */
     public static synchronized QueryContext getInstance() {
@@ -39,7 +39,7 @@ public class QueryContext {
     }
 	
     /**
-     * ¼³Á¤ÆÄÀÏÀ» ·Îµå ÇÑ´Ù.
+     * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Îµï¿½ ï¿½Ñ´ï¿½.
      *
      */
 	private QueryContext () {
@@ -68,7 +68,7 @@ public class QueryContext {
 	}
 	
 	/**
-	 * ÄÁÇÇ±×¸¦ ¸®·Îµå ÇÑ´Ù.
+	 * ï¿½ï¿½ï¿½Ç±×¸ï¿½ ï¿½ï¿½ï¿½Îµï¿½ ï¿½Ñ´ï¿½.
 	 *
 	 */
 	public synchronized void reloadConfig(){

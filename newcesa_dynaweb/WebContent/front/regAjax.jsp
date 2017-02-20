@@ -53,13 +53,24 @@
 
 		//log.debug("value : "+StringUtils.defaultString(request.getParameter("checked_"+i),"0"));
 		if(cRowSet.next()){
-			if(MemberDAO.getInstance().updateMemberCheckValue(params)){
+			System.out.println("----------look at me if------------------------" + params.get(6));
+			/* activity word가 변경되었을 경우 새로운 word를 insert */
+			RowSetMapper info_RowSet = MemberDAO.getInstance().checkMemberCheckInfo(params);
+			if(info_RowSet.size() == 0) {
+				MemberDAO.getInstance().regMemberCheckValue2(params);
 				resultCount++;
+			} else {
+				if(MemberDAO.getInstance().updateMemberCheckValue(params)){
+					resultCount++;
+				}
 			}
 		}else{
+			System.out.println("----------look at me else------------------------" + params.get(6));
+			MemberDAO.getInstance().regMemberCheckValue2(params);
+			/*
 			if(MemberDAO.getInstance().regMemberCheckValue(params)){
 				resultCount++;
-			}
+			}*/
 		}
 		
 	}
