@@ -71,7 +71,7 @@ eventer(messageEvent,function(e) {
 //	sbpMapData[3]	->	activity id
 //	sbpMapData[4]	->	activity name 
 //	sbpMapData[5]	->  activity 메인 이름
- 	sbpMapData[4] += "(" + sbpMapData[5] + ")";		// activity이름과 메인이름을 합쳐준다. 
+// 	sbpMapData[4] += "(" + sbpMapData[5] + ")";		// activity이름과 메인이름을 합쳐준다. 
 
 
 	/* 선택한 activityId 정렬과정 */
@@ -131,7 +131,7 @@ eventer(messageEvent,function(e) {
 				activityName_Array_Impl += ",&nbsp;&nbsp;&nbsp;&nbsp;";
 				i-=1;
 			}
-			if((i!=0) && (i%4 == 0)) {
+			if((i!=0) && (i%7 == 0)) {
 				activityName_Array_Impl += "<br/>";
 			}
 		}

@@ -7,6 +7,7 @@
 	 ============================================================================*/
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@page import="java.net.URLEncoder" %>
 <style type="text/css">
 
     .activityMatrix {
@@ -1148,7 +1149,6 @@ $(".connect_SBP_Project").live("click", function() {
 	var seq = "<%=seq%>";								// CESA 프로젝트 이름 번호(id)
 	var result = <%=result%>;						
 	var sbpProjectList = result.list;					// JSON에서 list만 추출 
-	
 	var html = "<table class='w3-table-all'>";
 		html += 	"<thead>"
 			+			"<tr>"
@@ -1252,11 +1252,10 @@ function connectSBP_Project(target) {
 function showSBPList() {
 	var sbp_project_puid = "<%=sbp_project_puid%>";
 	var sbp_ProjectName = "<%=sbp_ProjectName%>";
-	
 	if(sbp_ProjectName != "SBP 프로젝트를 선택해주세요.") {
-		var sbplist_url = "http://sbp.pssd.or.kr/sbp/listForHvm.jsp?hvm=true&memberId=sbpAdmin&sPUID=" + sbp_project_puid + "&sProjectName=" + sbp_ProjectName;	// SBP list를 보려면 SBP프로젝트이름과 SBP Puid가 필요하다 
+		var sbplist_url = "http://sbp.pssd.or.kr/sbp/listForHvm.jsp?hvm=true&memberId=sbpAdmin&sPUID=" + sbp_project_puid + "&sProjectName=" + encodeURI(sbp_ProjectName,"UTF-8") + "";	// SBP list를 보려면 SBP프로젝트이름과 SBP Puid가 필요하다 
 		$(".sbp-list").attr("src", sbplist_url);
-				
+
 		var modal = $("#SBP_List_Modal");
 		modal.css("display", "block");
 	} else {
@@ -1331,8 +1330,8 @@ $(".show_Sbp_Map").live("click", function(e) {
 	var target = $(this);
 	var sbpId = target.attr("sbpId");
 	sbp_dt = target.attr("sbp_name");
-	console.log(sbp_dt);
-	var sbpMap_Url = "http://sbp.pssd.or.kr/sbp/panel8ForHvm.jsp?seq=" + sbpId + "&hvm=true&memberId=sbpAdmin&sPUID=&docTitle=" + sbp_dt +"&sProjectName=" + "<%=sbp_ProjectName%>" + "";		// sbp map
+	var sbp_ProjectName = "<%=sbp_ProjectName%>";
+	var sbpMap_Url = "http://sbp.pssd.or.kr/sbp/panel8ForHvm.jsp?seq=" + sbpId + "&hvm=true&memberId=sbpAdmin&sPUID=&docTitle=" + encodeURI(sbp_dt, "UTF-8") +"&sProjectName=" + encodeURI(sbp_ProjectName,"UTF-8") + "&mapShow=true";		// sbp map
 	$(".sbp-map").attr("src", sbpMap_Url);
 	console.log(sbpMap_Url);
 	
