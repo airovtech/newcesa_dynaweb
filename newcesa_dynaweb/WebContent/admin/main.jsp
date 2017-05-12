@@ -10,6 +10,11 @@
 <%@ include file="/include/header.jsp" %>
 <%@ include file="/include/headerAdmin.jsp" %>
 <%@ include file="/admin/include/menu.jsp" %>
+<style>
+	body {
+		background-color:white;
+	}
+</style>
 <div class="top_title">CESA Admin</div>
 <%
 //out.println(session.getMaxInactiveInterval());

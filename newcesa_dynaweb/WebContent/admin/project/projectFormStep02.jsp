@@ -1253,7 +1253,9 @@ function showSBPList() {
 	var sbp_project_puid = "<%=sbp_project_puid%>";
 	var sbp_ProjectName = "<%=sbp_ProjectName%>";
 	if(sbp_ProjectName != "SBP 프로젝트를 선택해주세요.") {
-		var sbplist_url = "http://sbp.pssd.or.kr/sbp/listForHvm.jsp?hvm=true&memberId=sbpAdmin&sPUID=" + sbp_project_puid + "&sProjectName=" + encodeURI(sbp_ProjectName,"UTF-8") + "";	// SBP list를 보려면 SBP프로젝트이름과 SBP Puid가 필요하다 
+		var sbplist_url = "http://sbp.pssd.or.kr/sbp/listForHvm.jsp?hvm=true&memberId=sbpAdmin&sPUID=" + sbp_project_puid + "&sProjectName=" + encodeURI(sbp_ProjectName,"UTF-8");	// SBP list를 보려면 SBP프로젝트이름과 SBP Puid가 필요하다 
+		sbplist_url += "&editMode=true&fromClient=cesa";
+			
 		$(".sbp-list").attr("src", sbplist_url);
 
 		var modal = $("#SBP_List_Modal");
@@ -1346,17 +1348,18 @@ $(".show_Sbp_Map").live("click", function(e) {
 			var mapActivityArray_Impl = "";
 			
 			for(var i=0; i<mapActivityArray.length; i++) {
-				mapActivityArray_Impl += mapActivityArray[i];
-				if((i+=1) != (mapActivityArray.length)) {
+				mapActivityArray_Impl += mapActivityArray[i] + ", ";
+/*				if((i+=1) != (mapActivityArray.length)) {
 					mapActivityArray_Impl += ",&nbsp;&nbsp;&nbsp;&nbsp;";
 					i-=1;
 				}
 				if((i!=0) && (i%4 == 0)) {
 					mapActivityArray_Impl += "<br/>";
 				}
+*/
 			}
+			mapActivityArray_Impl = mapActivityArray_Impl.substring(0, mapActivityArray_Impl.length-2);
 			$(".activity_content").html(mapActivityArray_Impl);
-			
 		},
 		error : function(result){
 			alert("error : " + result);

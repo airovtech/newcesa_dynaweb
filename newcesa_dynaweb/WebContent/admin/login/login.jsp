@@ -19,9 +19,38 @@
 	<title><%=sc.get("site.name")%></title>
 	<script type="text/javascript" src="/js/jquery-1.4.2.min.js"></script>
 	<script type="text/javascript" src="/js/strFunction.js"></script>
-	<link rel="stylesheet" type="text/css" href="http://ui.dnt7.com/backoffice/css/import.css"/>
+<!-- 	<link rel="stylesheet" type="text/css" href="http://ui.dnt7.com/backoffice/css/import.css"/> -->
+	<link rel="stylesheet" type="text/css" href="/backoffice/css/login.css" />
 	<link rel="stylesheet" type="text/css" href="/css/admin/extended.css" />
 </head>
+<style>
+	@import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+	@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+	body {
+		width:100%!important;
+		height:100%!important;
+		background-color: #e9e9e9;
+		/*bisque; lavender; lightblue; lightgrey; lightsteelblue; silver;*/
+	}
+	#login_img_form {
+		position : absolute;
+		/*text-align: center;*/
+	} 
+	.solid_line {
+		border-bottom:2px solid white; 
+		margin-bottom:5px;
+	}
+	#login_img{
+		margin-top:20px;
+		margin-right:1500px;
+	}
+	.bottomLine {
+		position: absolute;
+		background-color:white;
+		bottom : 0;
+		width:100%;
+	}
+</style>
 <body>
 
 <script type="text/javascript">
@@ -56,7 +85,20 @@ function loginCheck(){
 	f.submit();
 	
 }
+
+
+
 </script>
+	<div id="login_img_form">
+		<div style=" background-color:; height:75px; float:left;">
+			<div style="font-family:Nanum Gothic;font-weight:bold;font-size:25px;padding-top:15px;">Customer Experience Sampling & Analysis (CESA)</div>
+		</div>
+		<div style="border-bottom:2px solid white; margin-top:56px; margin-bottom:12px;"></div>
+		<div style="background-color:white"> 
+			<img id="login_img" src="/images/login_img.jpg" />
+		</div>
+	</div>
+	<div class="solid_line"></div>
 	<div id="login_div">
 		<div id="logo_div">
 			<div>
@@ -80,7 +122,6 @@ function loginCheck(){
 					</div>
 					</form>
 					<div class="login_btn"><img src="../../images/button/login_btn.gif" class="abstop pointer" alt="로그인 버튼" onclick="loginCheck();"/></div>
-
 				</dd>
 				<dt class="login_guide">
 					
@@ -101,9 +142,52 @@ function loginCheck(){
 				</dt>
 			</dl>
 		</div>
-
 	</div>
+	<div class="bottomLine">
+		<img src="/backoffice/images/login/login_backbg.jpg" />
+	</div>
+<script>
+	var windowWidth = $(window).width();
+	var windowHeight = $(window).height();
+	
+	/* 이미지 크기 조절 */
+	$("#login_img_form").css("width", windowWidth);
+	$("#login_img").css("margin-left", (windowWidth - 602)/2);
+	$("#login_img").css("width", 602);
+	$("#login_img").css("height", 304.298);
+	$(".solid_line").css("width", windowWidth);
+	
+	/* 가운데 로그인 입력창 위치 */
+	var formHeight = $("#login_img_form").css("height").replace("px", "");
+	formHeight = parseInt(formHeight);
+	$("#login_div").css("margin-top", formHeight + 5);
+	
+	/* 바닥 흰 라인 위치 */
+	$(".bottomLine").css("height", windowHeight - (formHeight + 190));
+	
+	if(windowWidth >= 1600) {
+		/* 이미지 크기 조절 */
+		$("#login_img").css("margin-left", (windowWidth - 800)/2);
+		$("#login_img").css("width", 800);
+		$("#login_img").css("height", 404.298);
+		
+		/* 가운데 로그인 입력창 위치 */
+		var formHeight = $("#login_img_form").css("height").replace("px", "");
+		formHeight = parseInt(formHeight);
+		$("#login_div").css("margin-top", formHeight + 5);
+		
+		/* 로그인 입력창 내용 위치 조정 */
+		$("#login_div").css("width", 800);
+		$("#login_div").css("margin-right", 265);
+		$("#login_con").css("margin-right", 265);
+		
+		/* 바닥 흰 라인 위치 */
+		$(".bottomLine").css("height", windowHeight - (formHeight + 190));
+	}
+	
+	$("body").css("overflow-x", "hidden");
+</script>
 </body>
-</html>
 
+</html>
 <%@ include file="/include/footer.jsp" %>
