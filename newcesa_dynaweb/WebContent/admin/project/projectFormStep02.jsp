@@ -1142,7 +1142,7 @@ $(window).load(function() {
 /* SBP프로젝트 리스트를 보여준다 */
 $(".connect_SBP_Project").live("click", function() {
 	<%
-		String result = ServletUtil.request("http://sbp.pssd.or.kr/sbp/sbpListForHvm.jsp?hvm=true&memberId=sbpAdmin");		// SBP Project & puid
+		String result = ServletUtil.request("http://wine.smartworks.net:8095/sbp/sbpListForHvm.jsp?hvm=true&memberId=sbpAdmin");		// SBP Project & puid
 	%>
 	
 	var projectName = "<%=projectName%>";				// CESA 프로젝트 이름
@@ -1253,7 +1253,7 @@ function showSBPList() {
 	var sbp_project_puid = "<%=sbp_project_puid%>";
 	var sbp_ProjectName = "<%=sbp_ProjectName%>";
 	if(sbp_ProjectName != "SBP 프로젝트를 선택해주세요.") {
-		var sbplist_url = "http://sbp.pssd.or.kr/sbp/listForHvm.jsp?hvm=true&memberId=sbpAdmin&sPUID=" + sbp_project_puid + "&sProjectName=" + encodeURI(sbp_ProjectName,"UTF-8");	// SBP list를 보려면 SBP프로젝트이름과 SBP Puid가 필요하다 
+		var sbplist_url = "http://wine.smartworks.net:8095/sbp/listForHvm.jsp?hvm=true&memberId=sbpAdmin&sPUID=" + sbp_project_puid + "&sProjectName=" + encodeURI(sbp_ProjectName,"UTF-8");	// SBP list를 보려면 SBP프로젝트이름과 SBP Puid가 필요하다 
 		sbplist_url += "&editMode=true&fromClient=cesa";
 			
 		$(".sbp-list").attr("src", sbplist_url);
@@ -1333,7 +1333,7 @@ $(".show_Sbp_Map").live("click", function(e) {
 	var sbpId = target.attr("sbpId");
 	sbp_dt = target.attr("sbp_name");
 	var sbp_ProjectName = "<%=sbp_ProjectName%>";
-	var sbpMap_Url = "http://sbp.pssd.or.kr/sbp/panel8ForHvm.jsp?seq=" + sbpId + "&hvm=true&memberId=sbpAdmin&sPUID=&docTitle=" + encodeURI(sbp_dt, "UTF-8") +"&sProjectName=" + encodeURI(sbp_ProjectName,"UTF-8") + "&mapShow=true";		// sbp map
+	var sbpMap_Url = "http://wine.smartworks.net:8095/sbp/panel8ForHvm.jsp?seq=" + sbpId + "&hvm=true&memberId=sbpAdmin&sPUID=&docTitle=" + encodeURI(sbp_dt, "UTF-8") +"&sProjectName=" + encodeURI(sbp_ProjectName,"UTF-8") + "&mapShow=true";		// sbp map
 	$(".sbp-map").attr("src", sbpMap_Url);
 	console.log(sbpMap_Url);
 	
@@ -1433,7 +1433,7 @@ function SBP_Project_disConnect_no() {
 /* sbp activity를 보여준다 */
 function showActivity(target) {
 	var sbp_activityId = $(target).attr("sbp_activityId");
-	var srcUrl = "http://am.pssd.or.kr:9095/AMT_SYSTEM/otherActivityUpdate.runa?user_seq=1&sysType=SBP&operType=SR02&activity_name=" + sbp_activityId + "&united_user_seq=tester&user_id=tester&user_name=tester&project_name=test&project_puid=test"
+	var srcUrl = "http://wine.smartworks.net:9095/AMT_SYSTEM/otherActivityUpdate.runa?user_seq=1&sysType=SBP&operType=SR02&activity_name=" + sbp_activityId + "&united_user_seq=tester&user_id=tester&user_name=tester&project_name=test&project_puid=test"
 	$(".sbp-activity").attr("src", srcUrl);
 	
 	var modal = $("#SBP_Activity_Modal");
