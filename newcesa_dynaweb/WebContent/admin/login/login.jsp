@@ -50,10 +50,20 @@
 		bottom : 0;
 		width:100%;
 	}
+	.register {position:absolute; width:60px; height:20px; color:#142871; top:130px; margin-left:235px; cursor:pointer;}
+	.register > div {font-size:14px; padding-left:5px; padding-top:1px;}
 </style>
 <body>
 
 <script type="text/javascript">
+var widthSize, heightSize;
+$(window).resize(function() {
+	widthSize = parseInt($(window).width());
+	heightSize = parseInt($(window).height());
+	console.log("widthSize : ", widthSize);
+	console.log("heightSize : ", heightSize);
+}).resize();
+
 $(function(){
 	$("#adminid").focus();
 
@@ -86,6 +96,11 @@ function loginCheck(){
 	
 }
 
+function goToRegister() {
+	var left = (widthSize - 500)/2;
+	var top = (heightSize - 300)/2;
+	window.open("/admin/login/Login_Join.jsp", "CESA_Join", "width=530, height=370, top=" + top + ", left=" + left + ", toolbar=no, menubar=no, scrollbars=no, resizable=no" );  
+}
 
 
 </script>
@@ -121,7 +136,12 @@ function loginCheck(){
 						</dl>
 					</div>
 					</form>
-					<div class="login_btn"><img src="../../images/button/login_btn.gif" class="abstop pointer" alt="로그인 버튼" onclick="loginCheck();"/></div>
+					<div class="login_btn" style="cursor:pointer;">
+						<img src="../../images/button/login_btn.gif" class="abstop pointer" alt="로그인 버튼" onclick="loginCheck();"/>
+					</div>
+					<div class="register" onclick="goToRegister();">
+						<div>Register</div>
+					</div>
 				</dd>
 				<dt class="login_guide">
 					
@@ -136,7 +156,7 @@ function loginCheck(){
 					%><span class="red_font"><%=check_result%></span><%
 					}
 					else{
-						%>Please enter your ID and password<%
+						%>Please Enter your Information<%
 					}
 					%>
 				</dt>

@@ -149,7 +149,7 @@ function goDelete(seq)
 		if(totalCount - ((currPage-1) * 10) == 0){
 		%>
 		<tr>
-			<td colspan="8" class="ta_c">등록된 프로젝트가 없습니다.</td>
+			<td colspan="8" class="ta_c">No registered groups.</td>
 		</tr>
 		<%
 		}
@@ -159,7 +159,7 @@ function goDelete(seq)
 </div>
 
 <div style="width:100%; text-align:center; margin-top:20px;">
-    <dnt7:page pageCommonUrl='projectList.jsp' totCount='<%=totalCount%>' currPage='<%=currPage%>' serviceType='admin'/>
+    <dnt7:page pageCommonUrl='projectList_en.jsp' totCount='<%=totalCount%>' currPage='<%=currPage%>' serviceType='admin'/>
 </div>
 
 <div class="btn_group_right_align">

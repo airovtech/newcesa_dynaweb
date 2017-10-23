@@ -367,4 +367,62 @@ public class AdminDAO extends BaseDAO {
 		}
 		return check_result;
 	}
+	
+	
+	/* 새로운 유저(어드민) 생성시 마지막 생성유저의 유저그룹 번호를 가져온다. */
+	public int getUserGroupNumber(){
+		if( log.isDebugEnabled() ) {
+			//log.debug("chkAdminId() Start");
+		}
+		StringBuffer sbufQuery = new StringBuffer();
+		try {
+			sbufQuery.append(QueryContext.getInstance().get("admin.getUserGroupNumber"));
+			RowSetMapper db = new RowSetMapper();
+			QueryManager query = new QueryManager(sbufQuery.toString());
+			db.execute(query);
+			int result = -1;
+			if(db.next()){
+				result = db.getInt(1);
+			}
+			return result;
+
+		} catch (DBConnectedException dce) {
+			throw new DataAccessException(dce.getMessage(), dce);
+		} catch (SQLException e) {
+			throw new DataAccessException(e.getMessage(), e);
+		} catch (Exception e) {
+			if( log.isDebugEnabled() ) {
+				log.debug("Exception : " + e);
+			}
+			throw new DataAccessException(e.getMessage(), e);
+		}
+	}
+	
+	public boolean regUserAdmin(List params){
+		boolean check_result = false;
+		if( log.isDebugEnabled() ) {
+			//log.debug("regAdmin() Start");
+		}
+		StringBuffer sbufQuery = new StringBuffer();
+		try {
+			sbufQuery.append(QueryContext.getInstance().get("admin.regUserAdmin"));
+			RowSetMapper db = new RowSetMapper();
+			QueryManager query = new QueryManager(sbufQuery.toString());
+			for(int i = 1; i <= params.size() ; i++){
+				db.setString(i, (String)params.get(i-1));
+			}
+			if(db.executeUpdate(query) == 1){
+				check_result = true;
+			}
+
+
+		} catch(Exception e){
+			if( log.isDebugEnabled() ) {
+				check_result = false;
+				log.debug("Exception : " + e);
+			}
+		}
+
+		return check_result;
+	}
 }

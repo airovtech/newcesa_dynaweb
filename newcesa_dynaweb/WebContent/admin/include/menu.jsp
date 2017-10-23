@@ -31,6 +31,7 @@ function lang_ch(){
 			dataType : "json",
 			success : function(data){
 				//alert(data.language);
+				location.href="/admin/main.jsp";
 			}
 		});
 		
@@ -45,6 +46,7 @@ function lang_ch(){
 			dataType : "json",
 			success : function(data){
 				//alert(data.language);
+				location.href="/admin/main.jsp";
 			}
 		});
 	}

@@ -106,7 +106,7 @@ function goDelete(seq)
 		<tr>
 			<td class="ta_c"><%=++num%></td>
 			<td class="ta_c"><a href="groupForm.jsp?seq=<%=cRowSet.getString("seq")%>"><%=cRowSet.getString("group_name")%></a></td>
-			<td class="ta_c"><a href="groupForm.jsp?seq=<%=cRowSet.getString("seq")%>"><%=cRowSet.getString("name")%></a></td>
+			<td class="ta_c"><a href="groupForm.jsp?seq=<%=cRowSet.getString("seq")%>"><%//cRowSet.getString("name");%></a></td>
 			<td class="ta_c"><a href="groupForm.jsp?seq=<%=cRowSet.getString("seq")%>">수정</a> / <a href="javascript:goDelete('<%=cRowSet.getString("seq")%>')">삭제</a></td>
 		</tr>
 		<%

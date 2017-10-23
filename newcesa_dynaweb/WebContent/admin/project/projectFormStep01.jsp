@@ -128,7 +128,7 @@ function goSubmit(){
 		f.tempImage.focus();
 		return;
 	}
-	
+
 	f.step.value = "list";
 	f.action = "projectProcStep01.jsp";
 	f.submit();
@@ -170,7 +170,7 @@ function goNext(){
 		f.tempImage.focus();
 		return;
 	}
-	
+
 	f.step.value = "next";
 	f.action = "projectProcStep01.jsp";
 	f.submit();

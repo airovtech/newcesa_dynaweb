@@ -88,7 +88,7 @@
 
 		out.println("<script language='javascript'>");
 		out.println("alert('"+message+"');");
-		out.println("self.location.replace('vocabularyList.jsp');");
+		out.println("self.location.replace('vocabularyList_en.jsp');");
 		out.println("</script>");
 
 	}           

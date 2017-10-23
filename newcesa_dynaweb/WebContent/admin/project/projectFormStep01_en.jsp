@@ -170,7 +170,7 @@ function goNext(){
 		f.tempImage.focus();
 		return;
 	}
-	
+
 	f.step.value = "next";
 	f.action = "projectProcStep01_en.jsp";
 	f.submit();

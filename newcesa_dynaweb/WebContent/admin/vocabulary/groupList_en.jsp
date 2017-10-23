@@ -106,7 +106,7 @@ function goDelete(seq)
 		<tr>
 			<td class="ta_c"><%=++num%></td>
 			<td class="ta_c"><a href="groupForm_en.jsp?seq=<%=cRowSet.getString("seq")%>"><%=cRowSet.getString("group_name")%></a></td>
-			<td class="ta_c"><a href="groupForm_en.jsp?seq=<%=cRowSet.getString("seq")%>"><%=cRowSet.getString("name")%></a></td>
+			<td class="ta_c"><a href="groupForm_en.jsp?seq=<%=cRowSet.getString("seq")%>"><%//cRowSet.getString("name");%></a></td>
 			<td class="ta_c"><a href="groupForm_en.jsp?seq=<%=cRowSet.getString("seq")%>">modify</a> / <a href="javascript:goDelete('<%=cRowSet.getString("seq")%>')">delete</a></td>
 		</tr>
 		<%
@@ -119,7 +119,7 @@ function goDelete(seq)
 		if(num == 0){
 		%>
 		<tr>
-			<td colspan="4" class="ta_c">등록된 그룹이 없습니다.</td>
+			<td colspan="4" class="ta_c">No registered groups.</td>
 		</tr>
 		<%
 		}

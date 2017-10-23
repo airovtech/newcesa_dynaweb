@@ -94,7 +94,7 @@ function goDelete(seq)
 		<thead>
 		<tr>
 			<th class="ta_c">No.</th>
-			<th class="ta_c">ExperienceVocabulary</th>
+			<th class="ta_c">Experience Vocabulary</th>
 			<th class="ta_c">Group</th>
 			<th class="ta_c">modify / delete</th>
 		</tr>
@@ -120,7 +120,7 @@ function goDelete(seq)
 		if(num == 0){
 		%>
 		<tr>
-			<td colspan="4" class="ta_c">등록된 어휘가 없습니다.</td>
+			<td colspan="4" class="ta_c">No registered groups.</td>
 		</tr>
 		<%
 		}
