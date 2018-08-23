@@ -50,6 +50,10 @@
 		bottom : 0;
 		width:100%;
 	}
+	.bottomLine > img {
+		width:100%;
+		height:100%;
+	}
 	.register {position:absolute; width:60px; height:20px; color:#142871; top:130px; margin-left:235px; cursor:pointer;}
 	.register > div {font-size:14px; padding-left:5px; padding-top:1px;}
 </style>

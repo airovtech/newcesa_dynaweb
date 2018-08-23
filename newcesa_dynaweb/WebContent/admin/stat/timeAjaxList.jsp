@@ -142,8 +142,6 @@
 		sbufEtcTable.append("<th colspan=2>수정 점수/시간 정보</th> \n");
 		sbufEtcTable.append("</tr> \n");
 		
-		
-
 		for(int i=1;i<=tempCol;i++){
 			point = 0;
 			//System.out.println(projectSeq+"//"+ (String)arrActivityData.get((i-1))+"//"+cRowSet.size()+cRowSet.getString("activity"));
@@ -151,7 +149,9 @@
 			
 				while(cRowSet.next()){
 					
-					if(arrUserList.contains(cRowSet.getString("memberid"))&&arrActivityList.contains(cRowSet.getString("activity"))&&arrWordList.contains(cRowSet.getString("word"))){
+					if( (arrUserList.contains(cRowSet.getString("memberid").toLowerCase()) || arrUserList.contains(cRowSet.getString("memberid").toUpperCase())) && 
+							(arrActivityList.contains(cRowSet.getString("activity").toLowerCase()) || arrActivityList.contains(cRowSet.getString("activity").toUpperCase())) &&
+							(arrWordList.contains(cRowSet.getString("word").toLowerCase()) || arrWordList.contains(cRowSet.getString("word").toUpperCase())) ) {
 						//sbufEtcTable.append(cRowSet.getString("memberid")+" - "+(String)arrActivityData.get((i-1))+" - "+cRowSet.getString("word")+ "-"+cRowSet.getString("check_value")+"</br>");
 						iRowSet=MemberDAO.getInstance().getMemberCheckedInfo(cRowSet.getString("check_seq"));
 						iRowSet.last();
@@ -211,8 +211,8 @@
 					
 				}
 			}
-		
 
+		
 		
 
 		sbufEtcTable.append("</table> \n");

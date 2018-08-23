@@ -160,7 +160,7 @@ var tempAjaxData;
 
 function changeProject(){
 	var frm = document.frm;
-	frm.action = "time.jsp";
+	frm.action = "time_en.jsp";
 	frm.submit();
 }
 
@@ -173,12 +173,15 @@ function getStatList(type){
 
 	var params="type="+type+"&projectSeq="+frm.projectSeq.value+"&userList="+encodeURIComponent(tf_propertiesTable.GetColValues(0, false))+"&activityList="+encodeURIComponent(tf_propertiesTable.GetColValues(1, false))+"&wordList="+encodeURIComponent(tf_propertiesTable.GetColValues(2, false));
 	
+	if (params.length > 6500) {
+		alert("There are too many lists to check.");
+		return;
+	}
+	
 	$.getJSON('timeAjaxList_en.jsp?'+params, null, function(data) {
 
 		document.getElementById("statList").innerHTML = data.html;
 		document.getElementById("etcList").innerHTML = data.htmlEtc;
-		
-
 		
 	});
 	/*
@@ -201,8 +204,12 @@ $(window).load(function() {
 	document.getElementById("all").style.minWidth = "1300px";
 	var tempCount = 0;
 	<%=sbufTableFilter%>
-    var tf03 = setFilterGrid("propertiesTable", 1, tableFilters)
+    var tf03 = setFilterGrid("propertiesTable", 1, tableFilters);
 
+    $("#flt0_propertiesTable_0").attr("checked", true);
+    $("#flt1_propertiesTable_0").attr("checked", true);
+    $("#flt2_propertiesTable_0").attr("checked", true);
+    
 });
 
 </script>

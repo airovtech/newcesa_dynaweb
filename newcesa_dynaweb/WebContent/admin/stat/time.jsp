@@ -170,15 +170,17 @@ function getStatList(type){
 	document.getElementById("tableType").value = type;
 	
 	//alert(tf_propertiesTable.GetColValues(1, false));
-
 	var params="type="+type+"&projectSeq="+frm.projectSeq.value+"&userList="+encodeURIComponent(tf_propertiesTable.GetColValues(0, false))+"&activityList="+encodeURIComponent(tf_propertiesTable.GetColValues(1, false))+"&wordList="+encodeURIComponent(tf_propertiesTable.GetColValues(2, false));
 	
+	if (params.length > 6500) {
+		alert("조회하려는 목록이 너무 많습니다.");
+		return;
+	}
+	
 	$.getJSON('timeAjaxList.jsp?'+params, null, function(data) {
-
+		
 		document.getElementById("statList").innerHTML = data.html;
 		document.getElementById("etcList").innerHTML = data.htmlEtc;
-		
-
 		
 	});
 	/*
@@ -201,8 +203,12 @@ $(window).load(function() {
 	document.getElementById("all").style.minWidth = "1300px";
 	var tempCount = 0;
 	<%=sbufTableFilter%>
-    var tf03 = setFilterGrid("propertiesTable", 1, tableFilters)
+    var tf03 = setFilterGrid("propertiesTable", 1, tableFilters);
 
+    $("#flt0_propertiesTable_0").attr("checked", true);
+    $("#flt1_propertiesTable_0").attr("checked", true);
+    $("#flt2_propertiesTable_0").attr("checked", true);
+    
 });
 
 </script>

@@ -106,8 +106,8 @@
 	
 		cRowSet = ProjectDAO.getInstance().projectActivityList(projectSeq);
 		
-		sbufTable.append("<div style='font-weight:bold;padding-top:10px;padding-bottom:5px;'>Personnel : "+userCount+"Persons ("+(type.equals("time") ? "Time Information": "평균" )+")&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
-		sbufTable.append("<div>날짜/시간 : "+today+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+		sbufTable.append("<div style='font-weight:bold;padding-top:10px;padding-bottom:5px;'>Personnel : "+userCount+"Persons ("+(type.equals("time") ? "Time Information": "average" )+")&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+		sbufTable.append("<div>Date/Time : "+today+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
 		
 		sbufTable.append("</div>");
 		sbufTable.append("</div>");
@@ -136,14 +136,12 @@
 		sbufEtcTable.append("<th>Personnel</th> \n");
 		sbufEtcTable.append("<th>Activity</th> \n");
 		sbufEtcTable.append("<th>Vocabulary</th> \n");
-		sbufEtcTable.append("<th colspan=2>최종 선택 점수/시간</th> \n");
-		sbufEtcTable.append("<th colspan=2>수정 점수/시간 정보</th> \n");
-		sbufEtcTable.append("<th colspan=2>수정 점수/시간 정보</th> \n");
-		sbufEtcTable.append("<th colspan=2>수정 점수/시간 정보</th> \n");
+		sbufEtcTable.append("<th colspan=2>Final selection score/Time</th> \n");
+		sbufEtcTable.append("<th colspan=2>Corrected score/Time information</th> \n");
+		sbufEtcTable.append("<th colspan=2>Corrected score/Time information</th> \n");
+		sbufEtcTable.append("<th colspan=2>Corrected score/Time information</th> \n");
 		sbufEtcTable.append("</tr> \n");
 		
-		
-
 		for(int i=1;i<=tempCol;i++){
 			point = 0;
 			//System.out.println(projectSeq+"//"+ (String)arrActivityData.get((i-1))+"//"+cRowSet.size()+cRowSet.getString("activity"));
@@ -151,7 +149,9 @@
 			
 				while(cRowSet.next()){
 					
-					if(arrUserList.contains(cRowSet.getString("memberid"))&&arrActivityList.contains(cRowSet.getString("activity"))&&arrWordList.contains(cRowSet.getString("word"))){
+					if( (arrUserList.contains(cRowSet.getString("memberid").toLowerCase()) || arrUserList.contains(cRowSet.getString("memberid").toUpperCase())) && 
+							(arrActivityList.contains(cRowSet.getString("activity").toLowerCase()) || arrActivityList.contains(cRowSet.getString("activity").toUpperCase())) &&
+							(arrWordList.contains(cRowSet.getString("word").toLowerCase()) || arrWordList.contains(cRowSet.getString("word").toUpperCase())) ) {
 						//sbufEtcTable.append(cRowSet.getString("memberid")+" - "+(String)arrActivityData.get((i-1))+" - "+cRowSet.getString("word")+ "-"+cRowSet.getString("check_value")+"</br>");
 						iRowSet=MemberDAO.getInstance().getMemberCheckedInfo(cRowSet.getString("check_seq"));
 						iRowSet.last();
@@ -270,7 +270,7 @@
 			items = new JSONArray();
 			items.add("Activity");
 	
-			items.add("기타");
+			items.add("etc");
 			jaPoint.add(items);
 
 			//log.debug("================================================");
@@ -290,7 +290,7 @@
 				jaPoint.add(items);
 			}
 
-			wordJson.put("title", "기타");
+			wordJson.put("title", "etc");
 			wordJson.put("data", jaPoint);
 
 			chartList.add(wordJson);
